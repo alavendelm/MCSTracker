@@ -308,9 +308,12 @@ def get_contour_list(this_image):
         # Transform to 8 bit for openCV
         cell_mask = np.uint8( cell_mask )
         if (float(cv2.__version__.split(".")[0]) < 3.0):
-            contour_list[cell_number],_ = cv2.findContours( cell_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE )    
+            contour_list[cell_number],_ = cv2.findContours( cell_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE )
+            print "using openCV: ", cv2.__version__
         else:
-            _,contour_list[cell_number],_ = cv2.findContours( cell_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE )    
+            _,contour_list[cell_number],_ = cv2.findContours( cell_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE )
+            print "using openCV: ", cv2.__version__
+
 
     return contour_list, cell_ids
     
